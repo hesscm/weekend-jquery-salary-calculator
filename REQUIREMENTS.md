@@ -1,0 +1,14 @@
+-[] create an initial array to store employee objects with  _employee first name, last name, ID number, job title, annual salary_ properties
+-[] create input fields to take all of the object properties on the DOM
+-[] create a 'Submit' button to store all of that data as an object in the array
+-[] append all employee data onto the DOM using a table
+-[] create a variable to hold the employee's monthly salaries
+-[] create a variable to track the company's monthly cost
+-[] append the monthly cost to the DOM
+-[] IF cost >$20k make monthly cost # on DOM red
+-[] create a delete button that removes an employee from the DOM(no need to worry about salary total yet)
+
+-------------------STRETCH GOALS----------------------
+-[] add styling
+-[] choose color scheme
+-[] update total monthly cost when an employee is removed
