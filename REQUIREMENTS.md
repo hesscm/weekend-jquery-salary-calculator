@@ -1,5 +1,6 @@
+-[x] create a skeleton html set up to model wireframe
 -[] create an initial array to store employee objects with  _employee first name, last name, ID number, job title, annual salary_ properties
--[] create input fields to take all of the object properties on the DOM
+-[x] create input fields to take all of the object properties on the DOM
 -[] create a 'Submit' button to store all of that data as an object in the array
 -[] append all employee data onto the DOM using a table
 -[] create a variable to hold the employee's monthly salaries
