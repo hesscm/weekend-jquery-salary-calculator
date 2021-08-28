@@ -37,20 +37,43 @@ function readyNow() {
     $('#employees-table-body').on('click', '.delete-button',deleteEmployeeData);
 }
 
-//delete employee data from DOM
+//grab the salary from the row(this was HARD!!!) and delete employee data from DOM
 function deleteEmployeeData() {
-    //Note: this = delete button, this.parent() = Actions data field, this.parent().parent() = employee row
+    //find the salary from the row of the button being deleted
+    //                  button buttontd   row    search for class    return data
+    let annualSalary = $(this).parent().parent().find(".thisSalary").html();
+    //remove the non digit characters from the salary
+    annualSalary = annualSalary.replace("$", "").replace(",", "");
+    //convert the salary data into a number
+    annualSalary = Number(annualSalary);
+    monthlySalary = Math.round(annualSalary /12);
+    console.log(monthlySalary);
+    totalMonthlyCost -= monthlySalary;
+    $('#total-monthly-cost').empty(); //remove current number
+    $('#total-monthly-cost').append('$' + totalMonthlyCost.toLocaleString()); //append new number with commas
+
+  
     $(this).parent().parent().remove(); //deletes entire row
+}
+
+function updateMonthlyCostAfterDelete() {
+
 }
 
 //calculate and display 
 function displayTotalMonthlyCost() {
     console.log('in monthly costs');
-    console.log(employees);
-    //iterate through employees and add each salary to global variable
+
+    let totalAnnualCost = 0; //local annual cost, resets every time function is run
+    //iterate through employees and add each salary to local variable
     for (let i = 0; i < employees.length; i++) {
-        totalMonthlyCost += parseInt(employees[i].annualSalary); //turn all salaries into a number variable
+        totalAnnualCost += parseInt(employees[i].annualSalary); //turn all salaries into a number variable
     }
+
+    //monthly cost = annual cost divided by 12, rounded to the nearest integer
+    totalMonthlyCost = Math.round(totalAnnualCost / 12); 
+
+    //add red color to cost on DOM if over $20k
     if (totalMonthlyCost > 20000) {
         $('#total-monthly-cost').addClass('overCost');
     }
@@ -72,7 +95,7 @@ function displayAllEmployees() {
                 <td>${employees[i].lastName}</td>
                 <td>${employees[i].id}</td>
                 <td>${employees[i].title}</td>
-                <td>$${employees[i].annualSalary.toLocaleString()}</td>
+                <td class="thisSalary">$${employees[i].annualSalary.toLocaleString()}</td>
                 <td><button class="delete-button">Delete</button></td>
             </tr>`);
     }

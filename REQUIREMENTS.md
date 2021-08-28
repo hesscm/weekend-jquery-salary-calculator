@@ -7,7 +7,7 @@
 -[x] create a variable to track the company's monthly cost
 -[x] append the monthly cost to the DOM
 -[x] IF cost >$20k make monthly cost # on DOM red
--[] create a delete button that removes an employee from the DOM(no need to worry about salary total yet)
+-[x] create a delete button that removes an employee from the DOM(no need to worry about salary total yet)
 
 -------------------STRETCH GOALS----------------------
 -[] add styling
