@@ -27,8 +27,34 @@ const employees = [
 $(document).ready(readyNow);
 function readyNow() {
     console.log('DOM loaded');
-    //display the employees array
+    //display all employee data to the DOM
     displayAllEmployees();
+    $('#submit-button').on('click', addInputData);
+}
+
+//clears the data currently listed in the input fields on the DOM
+function clearInputFields() {
+    $('#first-name-input').val('');
+    $('#last-name-input').val('');
+    $('#id-input').val('');
+    $('#title-input').val('');
+    $('#annual-salary-input').val('');
+}
+
+//add input field data from DOM to the employees array as an object
+function addInputData() {
+    console.log('in addInputData');
+
+    employees.push({
+        firstName: $('#first-name-input').val(),
+        lastName: $('#last-name-input').val(),
+        id: $('#id-input').val(),
+        title: $('#title-input').val(),
+        annualSalary: $('#annual-salary-input').val()
+    });
+
+    displayAllEmployees();//display all employee data to the DOM
+    clearInputFields(); //clear input field data
 }
 
 //display all employee data to the DOM
