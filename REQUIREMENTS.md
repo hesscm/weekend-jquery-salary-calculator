@@ -3,9 +3,9 @@
 -[x] create input fields to take all of the object properties on the DOM
 -[x] create a 'Submit' button to store all of that data as an object in the array
 -[x] append all employee data onto the DOM using a table
--[] create a variable to hold the employee's monthly salaries
--[] create a variable to track the company's monthly cost
--[] append the monthly cost to the DOM
+-[x] create a variable to hold the employee's monthly salaries
+-[x] create a variable to track the company's monthly cost
+-[x] append the monthly cost to the DOM
 -[] IF cost >$20k make monthly cost # on DOM red
 -[] create a delete button that removes an employee from the DOM(no need to worry about salary total yet)
 

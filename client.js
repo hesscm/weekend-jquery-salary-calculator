@@ -36,19 +36,27 @@ function readyNow() {
     $('#submit-button').on('click', addInputData);
 }
 
+//calculate and display 
 function displayTotalMonthlyCost() {
+    console.log('in monthly costs');
+    console.log(employees);
     //iterate through employees and add each salary to global variable
     for (let i = 0; i < employees.length; i++) {
-        totalMonthlyCost += employees[i].annualSalary;
+        totalMonthlyCost += parseInt(employees[i].annualSalary); //turn all salaries into a number variable
+    }
+    if (totalMonthlyCost > 20000) {
+        $('#total-monthly-cost').addClass('overCost');
     }
     $('#total-monthly-cost').empty(); //remove current number
-    $('#total-monthly-cost').append(totalMonthlyCost.toLocaleString()); //append new number with commas
+    $('#total-monthly-cost').append('$' + totalMonthlyCost.toLocaleString()); //append new number with commas
 }
 
 //display all employee data to the DOM
 function displayAllEmployees() {
     //console table for testing
     console.table(employees);
+    
+    $('#employees-table-body').empty(); //delete current table data
     //iterate through employees array
     for (let i = 0; i < employees.length; i++) {
         //add each employee object property to the table body
@@ -63,8 +71,6 @@ function displayAllEmployees() {
     }
 }
 
-
-
 //add input field data from DOM to the employees array as an object
 function addInputData() {
     console.log('in addInputData');
@@ -77,8 +83,13 @@ function addInputData() {
         annualSalary: $('#annual-salary-input').val()
     });
 
+    //ensure that the annual salary and ID are numbers before leaving the function
+    employees[employees.length - 1].annualSalary = Number(employees[employees.length - 1].annualSalary);
+    employees[employees.length - 1].id = Number(employees[employees.length - 1].id);
+
     displayAllEmployees();//display all employee data to the DOM
     clearInputFields(); //clear input field data
+    displayTotalMonthlyCost();
 }
 
 //clears the data currently listed in the input fields on the DOM

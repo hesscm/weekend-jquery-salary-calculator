@@ -19,3 +19,7 @@ table {
 th, td {
   padding: 15px;
 }
+
+.overCost {
+    background-color: tomato;
+}
