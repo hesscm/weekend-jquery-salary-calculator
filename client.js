@@ -34,6 +34,13 @@ function readyNow() {
     displayAllEmployees();
     displayTotalMonthlyCost();
     $('#submit-button').on('click', addInputData);
+    $('#employees-table-body').on('click', '.delete-button',deleteEmployeeData);
+}
+
+//delete employee data from DOM
+function deleteEmployeeData() {
+    //Note: this = delete button, this.parent() = Actions data field, this.parent().parent() = employee row
+    $(this).parent().parent().remove(); //deletes entire row
 }
 
 //calculate and display 
@@ -53,9 +60,8 @@ function displayTotalMonthlyCost() {
 
 //display all employee data to the DOM
 function displayAllEmployees() {
-    //console table for testing
-    console.table(employees);
-    
+    console.table(employees); //console table for testing
+
     $('#employees-table-body').empty(); //delete current table data
     //iterate through employees array
     for (let i = 0; i < employees.length; i++) {
@@ -67,14 +73,14 @@ function displayAllEmployees() {
                 <td>${employees[i].id}</td>
                 <td>${employees[i].title}</td>
                 <td>$${employees[i].annualSalary.toLocaleString()}</td>
+                <td><button class="delete-button">Delete</button></td>
             </tr>`);
     }
 }
 
 //add input field data from DOM to the employees array as an object
 function addInputData() {
-    console.log('in addInputData');
-
+    //add input field data to array
     employees.push({
         firstName: $('#first-name-input').val(),
         lastName: $('#last-name-input').val(),
@@ -83,13 +89,13 @@ function addInputData() {
         annualSalary: $('#annual-salary-input').val()
     });
 
-    //ensure that the annual salary and ID are numbers before leaving the function
+    //ensure that the annual salary and ID are number variables before leaving the function
     employees[employees.length - 1].annualSalary = Number(employees[employees.length - 1].annualSalary);
     employees[employees.length - 1].id = Number(employees[employees.length - 1].id);
 
-    displayAllEmployees();//display all employee data to the DOM
+    displayAllEmployees(); //display all employee data to the DOM
     clearInputFields(); //clear input field data
-    displayTotalMonthlyCost();
+    displayTotalMonthlyCost(); //update total monthly cost
 }
 
 //clears the data currently listed in the input fields on the DOM
