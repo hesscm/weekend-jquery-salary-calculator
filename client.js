@@ -4,32 +4,33 @@ console.log('js ready');
 let totalMonthlyCost = 0;
 //initial employees array with pre-entered employee objects
 const employees = [
-    {
-    firstName: 'Jen',
-    lastName: 'Barber', 
-    id: 4521, 
-    title: 'Team Lead', 
-    annualSalary: 80000},
-    {
-    firstName: 'Maurice',
-    lastName: 'Moss',
-    id: 8724,
-    title: 'Support Team',
-    annualSalary: 58000
-    },
-    {
-    firstName: 'Roy',
-    lastName: 'Smith',
-    id: 9623,
-    title: 'Quality Assurance',
-    annualSalary: 48000
-    }
+    // {
+    // firstName: 'Jen',
+    // lastName: 'Barber', 
+    // id: 4521, 
+    // title: 'Team Lead', 
+    // annualSalary: 80000},
+    // {
+    // firstName: 'Maurice',
+    // lastName: 'Moss',
+    // id: 8724,
+    // title: 'Support Team',
+    // annualSalary: 58000
+    // },
+    // {
+    // firstName: 'Roy',
+    // lastName: 'Smith',
+    // id: 9623,
+    // title: 'Quality Assurance',
+    // annualSalary: 48000
+    // }
 ];
 
 //wait for DOM to load and then run readyNow()
 $(document).ready(readyNow);
 function readyNow() {
     console.log('DOM loaded');
+    
     //display all employee data to the DOM
     displayAllEmployees();
     displayTotalMonthlyCost();
@@ -99,6 +100,10 @@ function displayAllEmployees() {
                 <td><button class="delete-button">Delete</button></td>
             </tr>`);
     }
+    //Alternate row colors for visibility
+    //Source: https://stackoverflow.com/questions/3084261/alternate-table-row-color-using-css
+    $("tr:even").css("background-color", "#00476D");
+    $("tr:odd").css("background-color", "#005980");
 }
 
 //add input field data from DOM to the employees array as an object

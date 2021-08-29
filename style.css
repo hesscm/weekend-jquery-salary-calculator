@@ -1,12 +1,49 @@
-h1 {
-    background-color: grey;
-    color: white;
-    text-align: center;
+html {
+  font-family: 'Abel', sans-serif;
+  color: white;
 }
 
+header {
+    background-color: #003459;
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+body {
+  background-color: #00171f;
+}
+
+h2 {
+  color: ;
+}
+
+input {
+  background-color: #003459;
+  font-family: 'Abel', sans-serif;
+  color: white;
+}
+input::placeholder {
+  color: rgb(161, 162, 163);
+}
+
+button {
+  font-family: Roboto;
+}
+.delete-button {
+  background-color: rgb(167, 84, 129);
+}
+#submit-button {
+  background-color: #007ea7;
+}
+
+
+
+/* BEGIN TABLE STYLING */
 /* styling from w3schools */
 table, td, th {  
-  border: 1px solid #ddd;
+  border: 2px solid rgb(48, 43, 43);
   text-align: left;
 }
 
@@ -15,11 +52,19 @@ table {
   width: 100%;
   margin-top: 20px;
 }
+}
 
 th, td {
   padding: 15px;
 }
 
+th {
+  background-color: #003459;);
+}
+/* END TABLE STYLING */
+
+
+
 .overCost {
-    background-color: tomato;
+    background-color: rgb(138, 29, 29);
 }
