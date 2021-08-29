@@ -21,7 +21,6 @@ Employees can also be deleted from the table.
 
 ## Screen Shot
 
-Include one or two screen shots of your project here (optional). Remove if unused.
 ![Example of Salary Calculator](SalaryCalculatorScreenshot.PNG "Salary Calculator")
 
 ### Prerequisites
