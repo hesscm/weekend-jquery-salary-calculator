@@ -30,34 +30,44 @@ const employees = [
 $(document).ready(readyNow);
 function readyNow() {
     console.log('DOM loaded');
-    
+
     //display all employee data to the DOM
     displayAllEmployees();
+    //display total cost of listed employees
     displayTotalMonthlyCost();
+    //on submit click, enter input field data to array and DOm
     $('#submit-button').on('click', addInputData);
-    $('#employees-table-body').on('click', '.delete-button',deleteEmployeeData);
+    //on delete click, remove row from the DOM and update total cost counter
+    $('#employees-table-body').on('click', '.delete-button', deleteEmployeeData);
 }
 
 //grab the salary from the row(this was HARD!!!) and delete employee data from DOM
 function deleteEmployeeData() {
     //find the salary from the row of the button being deleted
-    //                  button buttontd   row    search for class    return data
-    let annualSalary = $(this).parent().parent().find(".thisSalary").html();
+                      //button buttontd   row    search for class    return data
+    let annualSalary = $(this).parent().parent().find(".thisSalary").text();
     //remove the non digit characters from the salary
-    annualSalary = annualSalary.replace("$", "").replace(",", "");
-    //convert the salary data into a number
-    annualSalary = Number(annualSalary);
-    monthlySalary = Math.round(annualSalary /12);
-    console.log(monthlySalary);
-    totalMonthlyCost -= monthlySalary;
-    $('#total-monthly-cost').empty(); //remove current number
-    $('#total-monthly-cost').append('$' + totalMonthlyCost.toLocaleString()); //append new number with commas
+    annualSalary = annualSalary.replace("$", "").replaceAll(",", "");
 
-  
+    displayCostAfterDelete(annualSalary); //pass in annual salary and display new cost
+
     $(this).parent().parent().remove(); //deletes entire row
 }
 
-function updateMonthlyCostAfterDelete() {
+
+//passes in the deleted salary and works similarly to displayTotalMonthlyCost() but subtracts
+function displayCostAfterDelete(annualSalary) {
+    //convert the salary data into a number
+    annualSalary = Number(annualSalary);
+    monthlySalary = Math.round(annualSalary / 12);
+    totalMonthlyCost -= monthlySalary; //subtract removed salary from the cost
+
+    //if this brings the cost below $20k, remove red background
+    if (totalMonthlyCost < 20000) {
+        $('#total-monthly-cost').removeClass('overCost');
+    }
+    $('#total-monthly-cost').empty(); //remove current number
+    $('#total-monthly-cost').append('$' + totalMonthlyCost.toLocaleString()); //append new number with commas
 
 }
 
@@ -72,7 +82,7 @@ function displayTotalMonthlyCost() {
     }
 
     //monthly cost = annual cost divided by 12, rounded to the nearest integer
-    totalMonthlyCost = Math.round(totalAnnualCost / 12); 
+    totalMonthlyCost = Math.round(totalAnnualCost / 12);
 
     //add red color to cost on DOM if over $20k
     if (totalMonthlyCost > 20000) {
@@ -108,22 +118,33 @@ function displayAllEmployees() {
 
 //add input field data from DOM to the employees array as an object
 function addInputData() {
-    //add input field data to array
-    employees.push({
-        firstName: $('#first-name-input').val(),
-        lastName: $('#last-name-input').val(),
-        id: $('#id-input').val(),
-        title: $('#title-input').val(),
-        annualSalary: $('#annual-salary-input').val()
-    });
 
-    //ensure that the annual salary and ID are number variables before leaving the function
-    employees[employees.length - 1].annualSalary = Number(employees[employees.length - 1].annualSalary);
-    employees[employees.length - 1].id = Number(employees[employees.length - 1].id);
+    //ensure all fields are entered before inputting an employee
+    if ($('#first-name-input').val() === '' || 
+        $('#last-name-input').val() === '' ||
+        $('#id-input').val() === '' ||
+        $('#title-input').val() === '' ||
+        $('#annual-salary-input').val() === ''){
+        alert("Please enter all of the required fields.");
+    }
+    else {
+        //add input field data to array
+        employees.push({
+            firstName: $('#first-name-input').val(),
+            lastName: $('#last-name-input').val(),
+            id: $('#id-input').val(),
+            title: $('#title-input').val(),
+            annualSalary: $('#annual-salary-input').val()
+        });
 
-    displayAllEmployees(); //display all employee data to the DOM
-    clearInputFields(); //clear input field data
-    displayTotalMonthlyCost(); //update total monthly cost
+        //ensure that the annual salary and ID are number variables before leaving the function
+        employees[employees.length - 1].annualSalary = Number(employees[employees.length - 1].annualSalary);
+        employees[employees.length - 1].id = Number(employees[employees.length - 1].id);
+
+        displayAllEmployees(); //display all employee data to the DOM
+        clearInputFields(); //clear input field data
+        displayTotalMonthlyCost(); //update total monthly cost
+    }
 }
 
 //clears the data currently listed in the input fields on the DOM
