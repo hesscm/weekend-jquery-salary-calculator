@@ -15,18 +15,21 @@ body {
   background-color: #00171f;
 }
 
-h2 {
-  color: ;
+#total-cost-h2 {
+  float: right;
 }
 
 input {
   background-color: #003459;
   font-family: 'Abel', sans-serif;
   color: white;
+
 }
 input::placeholder {
   color: rgb(161, 162, 163);
 }
+
+
 
 button {
   font-family: Roboto;
@@ -36,6 +39,11 @@ button {
 }
 #submit-button {
   background-color: #007ea7;
+  float: ;
+  display: table-cell;
+  vertical-align: middle;
+  flex-direction: column;
+  
 }
 
 
