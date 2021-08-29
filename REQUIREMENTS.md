@@ -10,6 +10,12 @@
 -[x] create a delete button that removes an employee from the DOM(no need to worry about salary total yet)
 
 -------------------STRETCH GOALS----------------------
--[] add styling
--[] choose color scheme
--[] update total monthly cost when an employee is removed
+-[x] add styling
+-[x] choose color scheme
+-[x] update total monthly cost when an employee is removed
+
+-------------------PERSONAL STRETCH GOALS----------------------
+-[x] remove red if number is below $20k
+-[x] no 2 IDs should be the same
+-[x] all input fields need to be filled before submission
+-[x] alternate colors in table

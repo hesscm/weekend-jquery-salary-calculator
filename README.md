@@ -9,13 +9,20 @@
 
 _Duration: 2 Day Sprint_
 
-Directly above this is how long it took you to develop the project. Your project description goes here. What problem did you solve? How did you solve it? 
+This program calculates the total monthly cost of employees and displays all of the data in the table. The user should fill out all required fields of:
 
-<text></text>
+1. First Name
+2. Last Name
+3. Employee ID
+4. Job Title
+5. Annual Salary
+
+Employees can also be deleted from the table.
 
 ## Screen Shot
 
 Include one or two screen shots of your project here (optional). Remove if unused.
+![Example of Salary Calculator](SalaryCalculatorScreenshot.PNG "Salary Calculator")
 
 ### Prerequisites
 
@@ -23,36 +30,24 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 
 ## Installation
 
-How do you get your application up and running? This is a step by step list for how another developer could get this project up and running. The good target audience in terms of knowledge, would be a fellow Primer from another cohort being able to spin up this project. Note that you do not need a paragraph here to intro Installation. It should be step-by-step.
-
-If your application has secret keys (for example --  Twilio), make sure you tell them how to set that up, both in getting the key and then what to call it in the `.env` file.
-
-1. Create a database named `your database name`,
-2. The queries in the `tables.sql` file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries, 
-3. Open up your editor of choice and run an `npm install`
-4. Run `npm run server` in your terminal
-5. Run `npm run client` in your terminal
-6. The `npm run client` command will open up a new browser tab for you!
+1. Fork the repository
+2. Ensure that [git is installed](https://git-scm.com/downloads) on your Mac/PC.
+2. Copy the SSH link under 'Code'.
+3. Enter terminal(Mac) or Git Bash(Windows) and in your desired folder, type 'git clone git@github.com:hesscm/weekend-jquery-salary-calculator.git'.
+4. Open with your preferred IDE.
+5. Alternatively, open the 'index.html' file with any browser.
 
 ## Usage
-How does someone use this application? Tell a user story here.
 
-1. xxx
-2. xxx
-3. xxx
-4. xxx
-5. xxx
-6. xxx
+1. Enter data in each required field. You cannot enter data with any empty fields.
+2. You cannot enter duplicate IDs.
+3. Submit the data with the 'Submit' button and note as the total monthly cost decreases.
+4. To remove an employee, hit the 'Delete' button in their row and note as the total monthly cost decreases.
 
 
 ## Built With
 
 HTML, CSS, JavaScript, JQuery
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
-
-_Note, include this only if you have a license file. GitHub will generate one for you if you want!_
 
 ## Acknowledgement
 Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality. (Shout out to Chris Black!)
